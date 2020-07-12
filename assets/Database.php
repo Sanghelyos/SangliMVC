@@ -16,19 +16,24 @@
 |
 */
 
-      function PDOConnexion() {
-        $user = "root"; //  à remplacer par le nom d'utilisateur de votre base de données
+  class Database{
 
-        $pass = ""; //  à remplacer par le mot de passe lié au compte utilisé. Laisse vide si pas de mot de passe
+    private static $_instance = NULL;
 
-        $dbname = "SangliMVC"; //  Nom de la base de données à utiliser
+      public static function PDOConnexion(): PDO {
 
-        $host = "127.0.0.1";  //  adresse de la base de données
+        if (self::$_instance === NULL)
+        {
+        /*/////////////////////////////
+        * Ce define sert à indiquer le chemin et le nom du dossier contenant le site à partir de la racine du serveur
+        *//////////////////////////////
+        define('DIR_NAME','SangliMVC');
+        $bdd_config = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/'.DIR_NAME.'/bdd.ini');
+        self::$_instance = new PDO('mysql:host='.$bdd_config['host'].';dbname='.$bdd_config['db'].';charset=utf8', $bdd_config['username'], $bdd_config['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        }
 
-        // connexion à la base de données
-        $bdd = new PDO('mysql:host='.$host.';dbname='.$dbname.';charset=utf8', $user, $pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-        // Retour des données de connexion à la base de données, à utiliser pour créer des requêtes.
-        return $bdd;
+        return self::$_instance;
       }
+    }
 ?>
