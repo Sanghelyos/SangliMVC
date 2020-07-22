@@ -10,5 +10,3 @@ if($config['ERROR_DISPLAY'] == true){
 else{
     error_reporting(0);
 }
-
-?>

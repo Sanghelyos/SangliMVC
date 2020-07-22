@@ -34,5 +34,4 @@
 
         return self::$_instance;
       }
-    }
-?>
+  }
