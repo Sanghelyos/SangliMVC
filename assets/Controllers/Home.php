@@ -21,5 +21,3 @@ class Home extends Controller{
                                     'nom' => $username], 1);
     }
 }
-
-?>

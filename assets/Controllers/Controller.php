@@ -10,8 +10,3 @@ abstract class Controller {
         $this->_model = new $this->_modelName();
     }
 }
-
-
-
-
-?>

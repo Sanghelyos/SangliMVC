@@ -27,7 +27,6 @@
         /*/////////////////////////////
         * Ce define sert à indiquer le chemin et le nom du dossier contenant le site à partir de la racine du serveur
         *//////////////////////////////
-        define('DIR_NAME','SangliMVC');
         $bdd_config = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/'.DIR_NAME.'/bdd.ini');
         self::$_instance = new PDO('mysql:host='.$bdd_config['host'].';dbname='.$bdd_config['db'].';charset=utf8', $bdd_config['username'], $bdd_config['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }
@@ -35,5 +34,4 @@
 
         return self::$_instance;
       }
-    }
-?>
+  }

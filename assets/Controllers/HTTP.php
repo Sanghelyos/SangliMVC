@@ -13,5 +13,3 @@ class HTTP extends Controller{
         \Renderer::Render('404', [NULL], 0);
     }
 }
-
-?>
