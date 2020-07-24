@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Connexion à la base de données
+| Utilisation du fichier Config
 |--------------------------------------------------------------------------
 |
 | Cette fonction est à utiliser s'il est nécessaire d'interragir avec la base de données.
@@ -16,21 +16,14 @@
 |
 */
 
-  class Database{
+  class Config{
 
-    private static $_instance = NULL;
+    private static $_config = NULL;
 
-      public static function PDOConnexion(): PDO {
+      public static function Get_config(){
 
-        if (self::$_instance === NULL)
-        {
-        /*/////////////////////////////
-        * Ce define sert à indiquer le chemin et le nom du dossier contenant le site à partir de la racine du serveur
-        *//////////////////////////////
-        $bdd_config = parse_ini_file('bdd.ini');
-        self::$_instance = new PDO('mysql:host='.$bdd_config['host'].';dbname='.$bdd_config['db'].';charset=utf8', $bdd_config['username'], $bdd_config['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-        }
+        self::$_config = parse_ini_file('config.ini');
 
-        return self::$_instance;
+        return self::$_config;
       }
     }
