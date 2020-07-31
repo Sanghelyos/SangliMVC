@@ -2,22 +2,31 @@
 
 namespace Models;
 
-class HTTP
+class Home
 { 
 
     protected $_bdd;
 
 
 
+        // Initialisation des propriétés de la classe
         public function __construct(){
 
             $this->_bdd = \Database::PDOConnexion();
 
         }
 
-        public function Nom_methode(){
+        public function Requete(){
 
-            //Contenu méthode
+        /*/////////////////////////////
+        * Méthode d'exemple, pour montrer comment interagir avec la BDD
+        *//////////////////////////////
+
+            $req = $this->_bdd->prepare(" SELECT * FROM News 
+                                        ORDER BY date_post DESC ");
+            $req->execute();
+            return $req->fetchAll();
+            $req->closeCursor();
         }
 
 
@@ -25,7 +34,7 @@ class HTTP
         * Accesseurs et mutateurs
         *//////////////////////////////
 
-        public function __set_string_lenght($property, $value, $lenght, $errormsg, $errorpagepath)
+        public function __set_value_lenght($property, $value, $lenght, $errormsg, $errorpagepath)
         {
             if (property_exists($this, $property))
             {
@@ -34,14 +43,14 @@ class HTTP
                 }
                 else{
                     $_SESSION['error'] = $errormsg;
-                    \Utils::Redirect($errorpagepath);
+                    \Tools::Redirect($errorpagepath);
                     exit();
                 }
             }
             else
             {
                 $_SESSION['error'] = "L'attribut " . $property . " n'existe pas";
-                \Utils::Redirect($errorpagepath);
+                \Tools::Redirect($errorpagepath);
                 exit();
             }
         }
@@ -55,44 +64,26 @@ class HTTP
                 }
                 else{
                     $_SESSION['error'] = $errormsg;
-                    \Utils::Redirect($errorpagepath);
+                    \Tools::Redirect($errorpagepath);
                     exit();
                 }
             }
             else
             {
                 $_SESSION['error'] = "L'attribut " . $property . " n'existe pas";
-                \Utils::Redirect($errorpagepath);
+                \Tools::Redirect($errorpagepath);
                 exit();
             }
         }
 
         public function __set($property, $value)
         {
-            if (property_exists($this, $property))
-            {
                 $this->$property = $value;
-            }
-            else
-            {
-                $_SESSION['error'] = "L'attribut " . $property . " n'existe pas";
-                \Utils::Redirect($errorpagepath);
-                exit();
-            }
         }
 
         public function __get($property)
         {
-            if (property_exists($this, $property))
-            {
                 return $this -> $property;
-            }
-            else
-            {
-                $_SESSION['error'] = "L'attribut " . $property . " n'existe pas";
-                \Utils::Redirect($errorpagepath);
-                exit();
-            }
         }
 
 }

@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <?php
+<?php
+
   //insertion navbar
   if($navbar != NULL){
    echo $navbar;
@@ -21,6 +22,11 @@
   //insertion page
   echo $page_content;
 
+
+  //insertion footer
+  if($footer != NULL){
+    echo $footer;
+   }
     ?>
 
     <script></script>

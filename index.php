@@ -2,18 +2,16 @@
     /*/////////////////////////////
     * Dépendances
     *//////////////////////////////
-require_once('assets/Models/Autoload.php');
-require_once('assets/Config.php');
-require_once('assets/Index_settings.php');
-
+require_once('src/Models/Autoload.php');
+require_once('src/Config.php');
+require_once('src/Index_settings.php');
     /*/////////////////////////////
     * Démarrage de session
     *//////////////////////////////
 session_start();
-
     /*/////////////////////////////
     * Contrôleur de gestion des routes
     *//////////////////////////////
-\Application::Execute();
+Routes::Execute();
 
 ?>

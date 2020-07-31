@@ -4,7 +4,7 @@
 #AddType x-mapp-php5 .php
  
 #Options +FollowSymlinks
-#RewriteEngine On
-#RewriteBase /
- 
-#RewriteRule ^[a-z]+\.php/(\d+)- index.php?id=$1 [L]
+RewriteEngine On
+RewriteBase /
+#RewriteRule ^index\.php$ - [L]
+SetEnv TZ Europe/Paris
